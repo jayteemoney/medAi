@@ -1,0 +1,153 @@
+{
+  "address": "0x6F491FaBdEc72fD14e9E014f50B2ffF61C508bf1",
+  "abi": [
+    {
+      "type": "function",
+      "name": "addRecord",
+      "inputs": [
+        { "name": "_ipfsHash", "type": "string" },
+        { "name": "_recordType", "type": "string" }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "getRecordCount",
+      "inputs": [{ "name": "_patient", "type": "address" }],
+      "outputs": [{ "name": "count", "type": "uint256" }],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getRecord",
+      "inputs": [
+        { "name": "_patient", "type": "address" },
+        { "name": "_index", "type": "uint256" }
+      ],
+      "outputs": [
+        {
+          "name": "record",
+          "type": "tuple",
+          "components": [
+            { "name": "ipfsHash", "type": "string" },
+            { "name": "timestamp", "type": "uint256" },
+            { "name": "patient", "type": "address" },
+            { "name": "recordType", "type": "string" }
+          ]
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getAllRecords",
+      "inputs": [{ "name": "_patient", "type": "address" }],
+      "outputs": [
+        {
+          "name": "records",
+          "type": "tuple[]",
+          "components": [
+            { "name": "ipfsHash", "type": "string" },
+            { "name": "timestamp", "type": "uint256" },
+            { "name": "patient", "type": "address" },
+            { "name": "recordType", "type": "string" }
+          ]
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getMyLatestRecord",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "record",
+          "type": "tuple",
+          "components": [
+            { "name": "ipfsHash", "type": "string" },
+            { "name": "timestamp", "type": "uint256" },
+            { "name": "patient", "type": "address" },
+            { "name": "recordType", "type": "string" }
+          ]
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "hasRecords",
+      "inputs": [{ "name": "_patient", "type": "address" }],
+      "outputs": [{ "name": "hasAnyRecords", "type": "bool" }],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "totalRecords",
+      "inputs": [],
+      "outputs": [{ "name": "total", "type": "uint256" }],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "getRecordsPaginated",
+      "inputs": [
+        { "name": "_patient", "type": "address" },
+        { "name": "_offset", "type": "uint256" },
+        { "name": "_limit", "type": "uint256" }
+      ],
+      "outputs": [
+        {
+          "name": "records",
+          "type": "tuple[]",
+          "components": [
+            { "name": "ipfsHash", "type": "string" },
+            { "name": "timestamp", "type": "uint256" },
+            { "name": "patient", "type": "address" },
+            { "name": "recordType", "type": "string" }
+          ]
+        },
+        { "name": "total", "type": "uint256" }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "event",
+      "name": "RecordAdded",
+      "inputs": [
+        { "name": "patient", "type": "address", "indexed": true },
+        { "name": "ipfsHash", "type": "string", "indexed": true },
+        { "name": "recordType", "type": "string", "indexed": false },
+        { "name": "timestamp", "type": "uint256", "indexed": false },
+        { "name": "recordIndex", "type": "uint256", "indexed": true }
+      ]
+    },
+    {
+      "type": "event",
+      "name": "RecordAccessed",
+      "inputs": [
+        { "name": "patient", "type": "address", "indexed": true },
+        { "name": "accessor", "type": "address", "indexed": true },
+        { "name": "recordIndex", "type": "uint256", "indexed": true },
+        { "name": "timestamp", "type": "uint256", "indexed": false }
+      ]
+    },
+    { "type": "error", "name": "EmptyIPFSHash", "inputs": [] },
+    { "type": "error", "name": "EmptyRecordType", "inputs": [] },
+    { "type": "error", "name": "InvalidIPFSHashLength", "inputs": [] },
+    {
+      "type": "error",
+      "name": "RecordIndexOutOfBounds",
+      "inputs": [
+        { "name": "requested", "type": "uint256" },
+        { "name": "available", "type": "uint256" }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "NoRecordsFound",
+      "inputs": [{ "name": "patient", "type": "address" }]
+    }
+  ]
+}
