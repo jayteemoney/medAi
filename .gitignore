@@ -56,3 +56,6 @@ env/
 
 # Misc
 .marscode/
+
+# video Strcture
+demo_guide.md
